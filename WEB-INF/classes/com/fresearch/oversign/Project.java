@@ -14,14 +14,14 @@ public class Project
 		ArrayList<FeedObjects> feedData = new ArrayList<FeedObjects>();
 		try
 		{
-			PreparedStatement ps = connection.prepareStatement("SELECT title,description,url FROM website ORDER BY id DESC");
+			PreparedStatement ps = connection.prepareStatement("SELECT userid,useremail,userfullname FROM userbasic ORDER BY userid DESC");
 			ResultSet rs = ps.executeQuery();
 			while(rs.next())
 			{
 				FeedObjects feedObject = new FeedObjects();
-				feedObject.setTitle(rs.getString("title"));
-				feedObject.setDescription(rs.getString("description"));
-				feedObject.setUrl(rs.getString("url"));
+				feedObject.setUserID(rs.getString("userid"));
+				feedObject.setUserEmail(rs.getString("useremail"));
+				feedObject.setUserFullName(rs.getString("userfullname"));
 				feedData.add(feedObject);
 			}
 			return feedData;

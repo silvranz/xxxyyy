@@ -1,26 +1,26 @@
 package com.fresearch.oversign;
 
 public class FeedObjects {
-	private String title;
-	private String description;
-	private String url;
+	private String userid;
+	private String useremail;
+	private String userfullname;
 	
-	public String getTitle() {
-		return title;
+	public String getUserID() {
+		return userid;
 	}
-	public void setTitle(String title) {
-		this.title = title;
+	public void setUserID(String userid) {
+		this.userid = userid;
 	}
-	public String getDescription() {
-		return description;
+	public String getUserEmail() {
+		return useremail;
 	}
-	public void setDescription(String description) {
-		this.description = description;
+	public void setUserEmail(String useremail) {
+		this.useremail = useremail;
 	}
-	public String getUrl() {
-		return url;
+	public String getUserFullName() {
+		return userfullname;
 	}
-	public void setUrl(String url) {
-		this.url = url;
+	public void setUserFullName(String userfullname) {
+		this.userfullname = userfullname;
 	}
 }
