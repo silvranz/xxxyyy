@@ -1,0 +1,6 @@
+//generate file .war
+jar -cvf oversign.war *
+
+//generate file .class
+javac -classpath "urllib" *.java
+D:\Programming\Project\oversign\WEB-INF\classes\com\fresearch\oversign>javac -classpath "D:\Programming\Project\oversign\WEB-INF\lib\*" *.java
