@@ -1,11 +1,17 @@
-package com.fresearch.oversign.controller;
+package com.fresearch.oversign.handler;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.Consumes;
+import com.google.gson.Gson;
+import com.fresearch.oversign.parameter.registerParam;
 
 @Path("/user")
 public class UserController{
 	
 	@Path("/register")
 	@POST
-	@Consume("application/json")
+	@Consumes("application/json")
 	@Produces("application/json")
 	public String registerNewUser(registerParam registerParam){
 		String registerResponse = null;

@@ -1,4 +1,4 @@
-package com.fresearch.oversign;
+package com.fresearch.oversign.handler;
 import java.util.ArrayList;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -6,7 +6,8 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import com.google.gson.Gson;
-import com.fresearch.oversign.*;
+import com.fresearch.oversign.data.PopularHashtagObj;
+import com.fresearch.oversign.controller.ForumController;
 
 @Path("/forum")
 public class ForumHandler {
@@ -18,7 +19,7 @@ public class ForumHandler {
 		String pho = null;
 		try 
 		{
-			ArrayList<PHOObjects> phoData = null;
+			ArrayList<PopularHashtagObj> phoData = null;
 			ForumController fc= new ForumController();
 			phoData = fc.GetPopularHashtag_C();
 			Gson gson = new Gson();

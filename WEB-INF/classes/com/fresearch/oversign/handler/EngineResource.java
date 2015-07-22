@@ -1,4 +1,4 @@
-package com.fresearch.oversign;
+package com.fresearch.oversign.handler;
 
 import java.util.ArrayList;
 
@@ -8,7 +8,8 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import com.google.gson.Gson;
-import com.fresearch.oversign.*;
+import com.fresearch.oversign.data.FeedObjects;
+import com.fresearch.oversign.controller.ProjectManager;
 
 @Path("/engine")
 public class EngineResource {

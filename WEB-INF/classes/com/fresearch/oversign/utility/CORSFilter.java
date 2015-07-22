@@ -1,4 +1,4 @@
-package com.fresearch.oversign;
+package com.fresearch.oversign.utility;
 import com.sun.jersey.spi.container.ContainerRequest;
 import com.sun.jersey.spi.container.ContainerResponse;
 import com.sun.jersey.spi.container.ContainerResponseFilter;

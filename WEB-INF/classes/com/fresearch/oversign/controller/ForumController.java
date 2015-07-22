@@ -1,7 +1,9 @@
-package com.fresearch.oversign;
+package com.fresearch.oversign.controller;
 import java.sql.Connection;
 import java.util.ArrayList;
-import com.fresearch.oversign.*;
+import com.fresearch.oversign.data.PopularHashtagObj;
+import com.fresearch.oversign.utility.Database;
+import com.fresearch.oversign.model.ForumModel;
 
 public class ForumController {
 	public ArrayList<PopularHashtagObj> GetPopularHashtag_C()throws Exception {

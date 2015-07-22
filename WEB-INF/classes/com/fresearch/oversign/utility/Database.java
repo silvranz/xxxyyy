@@ -1,4 +1,4 @@
-package com.fresearch.oversign;
+package com.fresearch.oversign.utility;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

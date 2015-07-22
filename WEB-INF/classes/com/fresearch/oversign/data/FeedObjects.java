@@ -1,4 +1,4 @@
-package com.fresearch.oversign;
+package com.fresearch.oversign.data;
 
 public class FeedObjects {
 	private String userid;

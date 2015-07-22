@@ -1,4 +1,4 @@
-package com.fresearch.oversign;
+package com.fresearch.oversign.data;
 
 public class PopularHashtagObj {
 	private String userid;

@@ -1,8 +1,10 @@
-package com.fresearch.oversign;
+package com.fresearch.oversign.controller;
 
 import java.sql.Connection;
 import java.util.ArrayList;
-import com.fresearch.oversign.*;
+import com.fresearch.oversign.data.FeedObjects;
+import com.fresearch.oversign.utility.Database;
+import com.fresearch.oversign.model.Project;
 
 public class ProjectManager {
 	public ArrayList<FeedObjects> GetFeeds()throws Exception {

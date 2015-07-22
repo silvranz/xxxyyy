@@ -13,7 +13,7 @@
 		</init-param>
 		<init-param>
 			<param-name>com.sun.jersey.spi.container.ContainerResponseFilters</param-name>
-			<param-value>com.fresearch.oversign.CORSFilter</param-value>
+			<param-value>com.fresearch.oversign.utility.CORSFilter</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
