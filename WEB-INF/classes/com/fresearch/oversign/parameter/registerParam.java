@@ -1,10 +1,15 @@
 package com.fresearch.oversign.parameter;
 
-public class registerParam{
+public class RegisterParam{
+	//attribut yang disamain dengan objek json yang dilempar
 	private String email;
 	private String password;
 	private String confirmPass;
 	
+	//belom coba tapi dibilangnya harus ada constructor kosong
+	public RegisterParam(){}
+	
+	//sisanya setter getter biasa
 	public String getEmail(){
 		return email;
 	}
