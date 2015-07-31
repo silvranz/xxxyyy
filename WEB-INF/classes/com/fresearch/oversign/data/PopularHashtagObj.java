@@ -1,26 +1,19 @@
 package com.fresearch.oversign.data;
 
 public class PopularHashtagObj {
-	private String userid;
-	private String useremail;
-	private String userfullname;
+	private String hashtagid;
+	private String hashtag;
 	
-	public String getUserID() {
-		return userid;
+	public String getHashtagID() {
+		return hashtagid;
 	}
-	public void setUserID(String userid) {
-		this.userid = userid;
+	public void setHashtagID(String hashtagid) {
+		this.hashtagid = hashtagid;
 	}
-	public String getUserEmail() {
-		return useremail;
+	public String getHashtag() {
+		return hashtag;
 	}
-	public void setUserEmail(String useremail) {
-		this.useremail = useremail;
-	}
-	public String getUserFullName() {
-		return userfullname;
-	}
-	public void setUserFullName(String userfullname) {
-		this.userfullname = userfullname;
+	public void setHashtag(String hashtag) {
+		this.hashtag = hashtag;
 	}
 }

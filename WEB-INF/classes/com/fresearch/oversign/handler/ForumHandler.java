@@ -7,6 +7,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import com.google.gson.Gson;
 import com.fresearch.oversign.data.PopularHashtagObj;
+import com.fresearch.oversign.data.HotThreadObj;
 import com.fresearch.oversign.controller.ForumController;
 
 @Path("/forum")
@@ -16,6 +17,7 @@ public class ForumHandler {
 	@Produces("application/json")
 	public String GetPopularHashtag_H()
 	{
+		
 		String pho = null;
 		try 
 		{
@@ -31,5 +33,28 @@ public class ForumHandler {
 			System.out.println("Exception Error");
 		}
 		return pho;
+	}
+
+	@GET
+	@Path("/gethotthread")
+	@Produces("application/json")
+	public String GetHotThread_H()
+	{
+		
+		String ht = null;
+		try 
+		{
+			ArrayList<HotThreadObj> htData = null;
+			ForumController fc= new ForumController();
+			htData = fc.GetHotThread_C();
+			Gson gson = new Gson();
+			ht = gson.toJson(htData);
+		}
+
+		catch (Exception e)
+		{
+			System.out.println("Exception Error");
+		}
+		return ht;
 	}
 }
