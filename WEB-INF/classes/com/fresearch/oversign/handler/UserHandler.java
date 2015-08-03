@@ -1,4 +1,5 @@
 package com.fresearch.oversign.handler;
+import java.util.ArrayList;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -8,11 +9,11 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.core.MediaType;
 import com.google.gson.Gson;
 
-import com.fresearch.oversign.parameter.RegisterParam;
 import com.fresearch.oversign.controller.UserController;
-import com.fresearch.oversign.data.FeedObjects;
 import com.fresearch.oversign.controller.ProjectManager;
-import java.util.ArrayList;
+import com.fresearch.oversign.data.FeedObjects;
+import com.fresearch.oversign.parameter.LoginParam;
+import com.fresearch.oversign.parameter.RegisterParam;
 
 @Path("/user")
 public class UserHandler {
@@ -23,7 +24,7 @@ public class UserHandler {
 	@POST
 	@Path("/register")
 	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.TEXT_PLAIN)
 	public String newUser(RegisterParam registerParam)
 	{
 		String responseObject = null;
@@ -34,8 +35,25 @@ public class UserHandler {
 		}
 		catch (Exception e)
 		{
+			responseObject = "success update";
 			System.out.println("Exception Error");
 		}
 		return responseObject;
+	}
+	
+	@POST
+	@Path("/login")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.TEXT_PLAIN)
+	public String loginUser(LoginParam loginParam){
+		String responseString = null;
+		try{
+			UserController userController = new UserController();
+			responseString = userController.Login(loginParam);
+		}
+		catch(Exception e){
+			responseString = "Login Error";
+		}
+		return responseString;
 	}
 }

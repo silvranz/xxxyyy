@@ -5,29 +5,56 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-import com.fresearch.oversign.utility.Encryption;
+import com.fresearch.oversign.data.LoginObject;
 
 public class UserModel 
 {
 	public String Registration(Connection connection,String userEmail,String userPassword) throws Exception
 	{
 		String response = "Error Model";
-		Encryption passwordEncryptor = new Encryption();
 		try
 		{
 			PreparedStatement ps = connection.prepareStatement("{call RegisterNewMember(?,?)}");
-			System.out.println(userEmail+":"+userPassword);
 			ps.setString(1,userEmail);
-			ps.setString(2,passwordEncryptor.PasswordEncription(userEmail,userPassword));
+			ps.setString(2,userPassword);
 			ResultSet rs = ps.executeQuery();
-			if(rs.next())
+			if(!rs.next())
 			{
-				response = "detected next";
+				response = "success";
+			}
+			else{
+				response = "User already exists";
 			}
 		}
 		catch(Exception e)
 		{
-			System.out.println("Model");
+			response = "success update";
+			System.out.println(e.getMessage());
+			throw e;
+		}
+		return response;
+	}
+	public LoginObject Login(Connection connection,String userEmail,String userPassword) throws Exception
+	{
+		LoginObject response = new LoginObject();
+		try
+		{
+			PreparedStatement ps = connection.prepareStatement("{call GetUserLogin(?,?)}");
+			ps.setString(1,userEmail);
+			ps.setString(2,userPassword);
+			ResultSet rs = ps.executeQuery();
+			System.out.println("masuk");
+			if(rs.next())
+			{
+				System.out.println("next");
+				response.setUserID(rs.getInt("UserID"));
+				response.setUserFullName(rs.getString("UserFullName"));
+				response.setIsAdministrator(rs.getInt("isAdministrator"));
+				response.setUserStatus(rs.getString("UserStatus"));
+			}
+		}
+		catch(Exception e)
+		{
 			throw e;
 		}
 		return response;
