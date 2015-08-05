@@ -8,7 +8,9 @@ import javax.ws.rs.core.MediaType;
 import com.google.gson.Gson;
 import com.fresearch.oversign.data.PopularHashtagObj;
 import com.fresearch.oversign.data.HotThreadObj;
+import com.fresearch.oversign.data.ForumSearchObj;
 import com.fresearch.oversign.controller.ForumController;
+import com.fresearch.oversign.parameter.ForumSearchParam;
 
 @Path("/forum")
 public class ForumHandler {
@@ -56,5 +58,29 @@ public class ForumHandler {
 			System.out.println("Exception Error");
 		}
 		return ht;
+	}
+
+
+	@POST
+	@Path("/getsearchresult")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public String GetSearchResult_H(ForumSearchParam forumsearchparam)
+	{
+		String fs = null;
+		try 
+		{
+			ArrayList<ForumSearchObj> fsData = null;
+			ForumController fc= new ForumController();
+			fsData = fc.GetForumSearch_C(forumsearchparam);
+			Gson gson = new Gson();
+			fs = gson.toJson(fsData);
+		}
+
+		catch (Exception e)
+		{
+			System.out.println("Exception Error");
+		}
+		return fs;
 	}
 }

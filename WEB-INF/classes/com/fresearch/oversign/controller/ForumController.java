@@ -3,8 +3,10 @@ import java.sql.Connection;
 import java.util.ArrayList;
 import com.fresearch.oversign.data.PopularHashtagObj;
 import com.fresearch.oversign.data.HotThreadObj;
+import com.fresearch.oversign.data.ForumSearchObj;
 import com.fresearch.oversign.utility.Database;
 import com.fresearch.oversign.model.ForumModel;
+import com.fresearch.oversign.parameter.ForumSearchParam;
 
 public class ForumController {
 	public ArrayList<PopularHashtagObj> GetPopularHashtag_C()throws Exception {
@@ -33,5 +35,19 @@ public class ForumController {
 			throw e;
 		}
 		return ht;
+	}
+	public ArrayList<ForumSearchObj> GetForumSearch_C(ForumSearchParam forumsearchparam)throws Exception {
+		ArrayList<ForumSearchObj> fs = null;
+		try {
+			Database database= new Database();
+			Connection connection = database.Get_Connection();
+			ForumModel fm= new ForumModel();
+			String search = ForumSearchParam.getSearch();
+			fs=fm.GetForumSearch_M(connection,search);
+		}
+		catch (Exception e) {
+			throw e;
+		}
+		return fs;
 	}
 }
