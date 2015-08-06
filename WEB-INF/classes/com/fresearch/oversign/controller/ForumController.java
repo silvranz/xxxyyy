@@ -36,13 +36,15 @@ public class ForumController {
 		}
 		return ht;
 	}
-	public ArrayList<ForumSearchObj> GetForumSearch_C(ForumSearchParam forumsearchparam)throws Exception {
+	public static ArrayList<ForumSearchObj> GetForumSearch_C(ForumSearchParam forumsearchparam)throws Exception {
 		ArrayList<ForumSearchObj> fs = null;
 		try {
 			Database database= new Database();
 			Connection connection = database.Get_Connection();
 			ForumModel fm= new ForumModel();
-			String search = ForumSearchParam.getSearch();
+			ForumSearchParam fsp = new ForumSearchParam();
+			String search = fsp.getSearch();
+			//String search = ForumSearchParam.getSearch();
 			fs=fm.GetForumSearch_M(connection,search);
 		}
 		catch (Exception e) {

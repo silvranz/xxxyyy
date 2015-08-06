@@ -57,7 +57,7 @@ public class ForumModel
 			throw e;
 		}
 	}
-	public ArrayList<ForumSearchObj> GetForumSearch_C(Connection connection, String search) throws Exception
+	public ArrayList<ForumSearchObj> GetForumSearch_M(Connection connection, String search) throws Exception
 	{
 		ArrayList<ForumSearchObj> fsData = new ArrayList<ForumSearchObj>();
 		try
