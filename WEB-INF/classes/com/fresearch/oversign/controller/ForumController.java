@@ -42,8 +42,7 @@ public class ForumController {
 			Database database= new Database();
 			Connection connection = database.Get_Connection();
 			ForumModel fm= new ForumModel();
-			ForumSearchParam fsp = new ForumSearchParam();
-			String search = fsp.getSearch();
+			String search = forumsearchparam.getSearch();
 			//String search = ForumSearchParam.getSearch();
 			fs=fm.GetForumSearch_M(connection,search);
 		}

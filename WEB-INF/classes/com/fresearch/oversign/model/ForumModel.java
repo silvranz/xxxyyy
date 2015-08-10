@@ -80,6 +80,7 @@ public class ForumModel
 		}
 		catch(Exception e)
 		{
+			System.out.println(e.getMessage());
 			throw e;
 		}
 	}
