@@ -20,15 +20,16 @@ public class MyProfileHandler {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String GetProfile_H(MyProfileParam myprofileparam)
 	{
-		String mfc = null;
+		String mfc = "aaa";
 		try 
 		{
-			ArrayList<MyProfileObj> mpoData = null;
+			/*ArrayList<MyProfileObj> mpoData = null;
 			MyProfileController mpc= new MyProfileController();
 			mpoData = mpc.GetProfile_C(myprofileparam);
 			System.out.println("aaa");
 			Gson gson = new Gson();
-			mfc = gson.toJson(mpoData);
+			mfc = gson.toJson(mpoData);*/
+			System.out.println("masuk");
 		}
 
 		catch (Exception e)
