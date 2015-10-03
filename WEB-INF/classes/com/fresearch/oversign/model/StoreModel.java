@@ -32,12 +32,16 @@ public class StoreModel
 		}
 		return response;
 	}
-	public ArrayList<TemplateData> GetAllTemplate(Connection connection) throws Exception
+	public ArrayList<TemplateData> GetAllTemplate(Connection connection,int limit,int sort,int offset,int categoryId) throws Exception
 	{
 		ArrayList<TemplateData> response = new ArrayList<TemplateData>();
 		try
 		{
-			PreparedStatement ps = connection.prepareStatement("{call GetTemplate()}");
+			PreparedStatement ps = connection.prepareStatement("{call GetTemplate(?,?,?,?)}");
+			ps.setInt(1,limit);
+			ps.setInt(2,sort);
+			ps.setInt(3,categoryId);
+			ps.setInt(4,offset);
 			ResultSet rs = ps.executeQuery();
 			while(rs.next())
 			{

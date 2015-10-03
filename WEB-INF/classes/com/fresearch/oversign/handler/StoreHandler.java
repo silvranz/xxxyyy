@@ -12,6 +12,7 @@ import com.google.gson.Gson;
 import com.fresearch.oversign.controller.StoreController;
 import com.fresearch.oversign.data.TemplateCategoryData;
 import com.fresearch.oversign.data.TemplateData;
+import com.fresearch.oversign.parameter.TemplateParam;
 
 @Path("/store")
 public class StoreHandler {
@@ -28,24 +29,24 @@ public class StoreHandler {
 		}
 		catch (Exception e)
 		{
-			System.out.println("Handler error");
+			System.out.println(e.getMessage());
 		}
 		return responseObject;
 	}
-	@GET
+	@POST
 	@Path("/getAllTemplate")
 	@Produces(MediaType.APPLICATION_JSON)
-	public ArrayList<TemplateData> getAllTemplate()
+	public ArrayList<TemplateData> getAllTemplate(TemplateParam templateParam)
 	{
 		ArrayList<TemplateData> responseObject = new ArrayList<TemplateData>();
 		try 
 		{
 			StoreController storeController = new StoreController();
-			responseObject = storeController.GetAllTemplate();
+			responseObject = storeController.GetAllTemplate(templateParam);
 		}
 		catch (Exception e)
 		{
-			System.out.println("Handler error");
+			System.out.println(e.getMessage());
 		}
 		return responseObject;
 	}
