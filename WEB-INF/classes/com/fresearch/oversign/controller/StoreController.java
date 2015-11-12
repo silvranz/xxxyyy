@@ -3,9 +3,11 @@ import java.sql.Connection;
 import java.util.ArrayList;
 import com.fresearch.oversign.data.TemplateCategoryData;
 import com.fresearch.oversign.data.TemplateData;
+import com.fresearch.oversign.data.StringResponse;
 import com.fresearch.oversign.model.StoreModel;
 import com.fresearch.oversign.utility.Database;
 import com.fresearch.oversign.parameter.TemplateParam;
+import com.fresearch.oversign.parameter.StoreParam;
 
 public class StoreController {
 	public ArrayList<TemplateCategoryData> GetAllCategory()throws Exception {
@@ -38,5 +40,20 @@ public class StoreController {
 			throw e;
 		}
 		return listTemplate;
+	}
+	
+	public StringResponse SaveStore(StoreParam storeParam) throws Exception{
+		StringResponse response = new StringResponse(0,"Error Validation");
+		try{
+			Database database= new Database();
+			Connection connection = database.Get_Connection();
+			StoreModel storeModel= new StoreModel();
+			response = storeModel.SaveStore(connection,limit,sort,offset,categoryId);
+		}
+		catch (Exception e){
+			System.out.println(e.getMessage());
+			throw e;
+		}
+		return response;
 	}
 }

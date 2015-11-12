@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import com.fresearch.oversign.data.TemplateCategoryData;
 import com.fresearch.oversign.data.TemplateData;
+import com.fresearch.oversign.data.StringResponse;
 
 public class StoreModel 
 {
@@ -60,6 +61,20 @@ public class StoreModel
 		}
 		catch(Exception e)
 		{
+			throw e;
+		}
+		return response;
+	}
+	
+	public StringResponse SaveStore(Connection connection) throws Exception{
+		StringResponse response = new StringResponse(0,"Data Rejected");
+		try{
+			//insert db
+			response.setResponse(1);
+			response.setMessage("Save succes");
+		}
+		catch(Exception e){
+			System.out.println(e.getMessage());
 			throw e;
 		}
 		return response;
