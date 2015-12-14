@@ -15,7 +15,7 @@ import com.fresearch.oversign.data.TemplateCategoryData;
 import com.fresearch.oversign.data.TemplateData;
 import com.fresearch.oversign.data.StringResponse;
 import com.fresearch.oversign.parameter.TemplateParam;
-import com.fresearch.oversign.parameter.StoreParam;
+import com.fresearch.oversign.parameter.workspace.StoreParam;
 
 @Path("/store")
 public class StoreHandler {
@@ -70,7 +70,7 @@ public class StoreHandler {
 		}
 		return responseObject;
 	}
-	@POST
+	/*@POST
 	@Path("/uploadImage")
 	@Consumes(MediaType.MULTIPART_FORM_DATA)
 	public Response uploadImage(@FormDataParam("file") InputStream fileInputStream,
@@ -86,5 +86,5 @@ public class StoreHandler {
 			System.out.println(e.getMessage());
 		}
 		return responseObject;
-	}
+	}*/
 }
