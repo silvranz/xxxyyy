@@ -8,8 +8,12 @@ import java.util.*;
 import org.apache.commons.io.FileUtils;
 
 public class Workshop {
-	private String projectBasePath = "D:\\Programming\\xampp\\htdocs\\";
-	private String templatePath = "D:\\Programming\\xampp\\tomcat\\webapps\\template\\";
+	private String projectBasePath = "\\var\\www\\html\\";//server
+	private String templatePath = "\\var\\www\\template\\";//server
+	private String confPath = "\\etc\\apache2\\sites-available\\";//server
+	private String templateConfFile = confPath+"template.conf";//server
+	//private String projectBasePath = "D:\\Programming\\xampp\\htdocs\\";//local
+	//private String templatePath = "D:\\Programming\\xampp\\tomcat\\webapps\\template\\";//local
 	private String pageName = "";
 	private String currentDir = "";
 	private String css = "";
@@ -24,6 +28,8 @@ public class Workshop {
 		try{
 			initProject(storeParam.getHomepage());
 			generateView(storeParam.getPages());
+			// kalau mau tes di lokal command settingSubdomain + global path ganti ke local(command yang server)
+			settingSubdomain(storeParam.getHomepage(),storeParam.getHomepage(),"index.php");
 		}
 		catch(IOException e){
 			throw e;
@@ -62,6 +68,42 @@ public class Workshop {
 		catch(IOException e){
 			throw e;
 		}
+	}
+	public void settingSubdomain(String subdomain,String projectName,String homePage) throws IOException
+	{
+		try{
+			String templateConf = "";
+			templateConf = FileUtils.readFileToString(new File(templateConfFile));
+			templateConf = templateConf.replace("$subdomain", subdomain);
+			templateConf = templateConf.replace("$projectName", projectName);
+			templateConf = templateConf.replace("$homePage", homePage);
+			createConf(subdomain+".ovs.my.id.conf",templateConf);
+			enableSubdomain(subdomain);
+		}
+		catch(IOException e){
+			throw e;
+		}
+	}
+	public void enableSubdomain(String subdomain){
+		ProcessBuilder pb = new ProcessBuilder("a2ensite",subdomain+".ovs.my.id.conf");
+		try {
+			Process shell = pb.start();
+			int error = shell.waitFor();
+			shell.destroy();
+			if (error == 0)
+			{
+				pb = new ProcessBuilder("service","apache2","restart");
+				shell = pb.start();
+				/*
+				//buat dapet response
+				InputStream shellIn = shell.getInputStream();
+				String response = IOUtils.toString(shellIn, "UTF-8");
+				System.out.println(response);
+				shellIn.close();
+				*/
+				shell.destroy();
+			}
+		} catch (IOException ex) {} catch (InterruptedException ex) {}
 	}
 	public String createNewContentPage(Page page) throws IOException{
 		String template = "";
@@ -211,6 +253,20 @@ public class Workshop {
 			String template = FileUtils.readFileToString(new File(templatePath+"jquery.js"));
 			createView("jquery.js",template);
 			// end copy jquery
+		}
+		catch(IOException e){
+			throw e;
+		}
+	}
+	public void createConf(String filename,String content) throws IOException{
+		try{		
+			File file = new File(confPath+filename);
+			if (file.createNewFile()){
+				System.out.println("File is created!");
+			}else{
+				System.out.println("File already exists.");
+			}
+			FileUtils.writeStringToFile(file, content);
 		}
 		catch(IOException e){
 			throw e;

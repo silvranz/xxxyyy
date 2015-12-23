@@ -79,4 +79,18 @@ public class StoreModel
 		}
 		return response;
 	}
+	
+	public StringResponse uploadImage(Connection connection,String fileName) throws Exception{
+		StringResponse response = new StringResponse(0,"Data Rejected");
+		try{
+			//insert db
+			response.setResponse(1);
+			response.setMessage("Save succes");
+		}
+		catch(Exception e){
+			System.out.println(e.getMessage());
+			throw e;
+		}
+		return response;
+	}
 }

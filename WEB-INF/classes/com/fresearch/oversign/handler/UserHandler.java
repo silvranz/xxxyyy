@@ -65,48 +65,48 @@ public class UserHandler {
 	@Produces(MediaType.TEXT_PLAIN)
 	public String sendEmail(){
 		// Recipient's email ID needs to be mentioned.
-      String to = "silvranz@gmail.com";
+		String to = "silvranz@gmail.com";
 
-      // Sender's email ID needs to be mentioned
-      String from = "silvranz@gmail.com";
+		// Sender's email ID needs to be mentioned
+		String from = "silvranz@gmail.com";
 
-      // Assuming you are sending email from localhost
-      String host = "smtp.gmail.com";
+		// Assuming you are sending email from localhost
+		String host = "smtp.gmail.com";
 
-      // Get system properties
-      Properties properties = System.getProperties();
+		// Get system properties
+		Properties properties = System.getProperties();
 
-      // Setup mail server
-      properties.setProperty("mail.smtp.host", host);
+		// Setup mail server
+		properties.setProperty("mail.smtp.host", host);
 
-      // Get the default Session object.
-      Session session = Session.getDefaultInstance(properties);
-	  String error = "error";
-      try{
-         // Create a default MimeMessage object.
-         MimeMessage message = new MimeMessage(session);
+		// Get the default Session object.
+		Session session = Session.getDefaultInstance(properties);
+		String error = "error";
+		try{
+			// Create a default MimeMessage object.
+			MimeMessage message = new MimeMessage(session);
 
-         // Set From: header field of the header.
-         message.setFrom(new InternetAddress(from));
+			// Set From: header field of the header.
+			message.setFrom(new InternetAddress(from));
 
-         // Set To: header field of the header.
-         message.addRecipient(Message.RecipientType.TO,
-                                  new InternetAddress(to));
+			// Set To: header field of the header.
+			message.addRecipient(Message.RecipientType.TO,
+								  new InternetAddress(to));
 
-         // Set Subject: header field
-         message.setSubject("This is the Subject Line!");
+			// Set Subject: header field
+			message.setSubject("This is the Subject Line!");
 
-         // Now set the actual message
-         message.setText("This is actual message");
+			// Now set the actual message
+			message.setText("This is actual message");
 
-         // Send message
-         Transport.send(message);
-         error = "Sent message successfully....";
-		 System.out.println("success");
-      }catch (MessagingException e) {
-         error = e.getMessage();
-		 System.out.println("success");
-      }
-	  return error;
+			// Send message
+			Transport.send(message);
+			error = "Sent message successfully....";
+			System.out.println("success");
+		}catch (MessagingException e) {
+			error = e.getMessage();
+			System.out.println("success");
+		}
+		return error;
 	}
 }

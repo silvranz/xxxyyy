@@ -1,5 +1,6 @@
 package com.fresearch.oversign.handler;
 import java.util.ArrayList;
+import java.io.*;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -8,7 +9,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import com.google.gson.Gson;
+import com.sun.jersey.core.header.FormDataContentDisposition;
+import com.sun.jersey.multipart.FormDataParam;
 
 import com.fresearch.oversign.controller.StoreController;
 import com.fresearch.oversign.data.TemplateCategoryData;
@@ -70,21 +72,23 @@ public class StoreHandler {
 		}
 		return responseObject;
 	}
-	/*@POST
+	
+	@POST
 	@Path("/uploadImage")
 	@Consumes(MediaType.MULTIPART_FORM_DATA)
-	public Response uploadImage(@FormDataParam("file") InputStream fileInputStream,
-								@FormDataParam("file") FormDataContentDisposition contentDispositionHandle)
+	public StringResponse uploadImage(@FormDataParam("file") InputStream fileInputStream,
+								@FormDataParam("file") FormDataContentDisposition fileDetail)
 	{
+		StringResponse responseObject = new StringResponse(0,"Unknown Error");
 		try 
 		{
 			StoreController storeController = new StoreController();
-			responseObject = storeController.SaveStore(storeParam);
+			responseObject = storeController.uploadImage(fileInputStream,fileDetail);
 		}
 		catch (Exception e)
 		{
 			System.out.println(e.getMessage());
 		}
 		return responseObject;
-	}*/
+	}
 }

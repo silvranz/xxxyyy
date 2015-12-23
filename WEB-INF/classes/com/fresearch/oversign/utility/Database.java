@@ -13,7 +13,7 @@ public class Database {
 		String connectionURL = "jdbc:mysql://localhost:3306/oversign";//oversign->nama database
 		Connection connection = null;
 		Class.forName("com.mysql.jdbc.Driver").newInstance();
-		connection = DriverManager.getConnection(connectionURL, "root", "");
+		connection = DriverManager.getConnection(connectionURL, "root", "amuliawan93@gmail.com");
 	    return connection;
 		}
 		catch (SQLException e)
